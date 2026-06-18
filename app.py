@@ -91,7 +91,7 @@ def equipment_list():
     equipment = cur.fetchall()
     cur.close()
 
-    return render_template("equipment.html", equipment=equipment)
+    return render_template("equipment_list.html", equipment=equipment)
 
 # =====================================================
 # 📌 ADD EQUIPMENT
