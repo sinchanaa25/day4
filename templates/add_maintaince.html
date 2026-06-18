@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Add Maintenance</h2>
+
+<form method="POST">
+
+    <input
+        type="date"
+        name="maintenance_date"
+        required
+    >
+    <br><br>
+
+    <input
+        name="technician_name"
+        placeholder="Technician Name"
+        required
+    >
+    <br><br>
+
+    <textarea
+        name="issue"
+        placeholder="Issue Reported"
+        required
+    ></textarea>
+
+    <br><br>
+
+    <textarea
+        name="resolution"
+        placeholder="Resolution Notes"
+        required
+    ></textarea>
+
+    <br><br>
+
+    <input
+        type="date"
+        name="next_due_date"
+        required
+    >
+    <br><br>
+
+    <button type="submit">
+        Save Maintenance
+    </button>
+
+</form>
+
+{% endblock %}

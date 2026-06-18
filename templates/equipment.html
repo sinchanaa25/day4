@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Equipment List</h2>
+
+<ul>
+{% for e in equipment %}
+    <li>
+        <a href="/equipment/{{ e.equipment_id }}">
+            {{ e.equipment_name }} -
+            {{ e.department }} -
+            {{ e.status }}
+        </a>
+    </li>
+{% endfor %}
+</ul>
+
+{% endblock %}

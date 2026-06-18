@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>{{ equipment.equipment_name }}</h2>
+
+<p>Status: {{ equipment.status }}</p>
+
+<p>Department: {{ equipment.department }}</p>
+
+<p>Serial Number: {{ equipment.serial_number }}</p>
+
+<h3>Maintenance Logs</h3>
+
+<ul>
+{% for l in logs %}
+    <li>
+        {{ l.maintenance_date }}
+        -
+        {{ l.issue_reported }}
+    </li>
+{% endfor %}
+</ul>
+
+<a href="/equipment/{{ equipment.equipment_id }}/add-maintenance">
+    Add Maintenance
+</a>
+
+{% endblock %}
