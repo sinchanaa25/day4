@@ -1,8 +1,171 @@
+/* =========================
+   GLOBAL STYLES
+========================= */
+
 body {
-    font-family: Arial;
-    margin: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f7fb;
+    color: #333;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav, body > a {
+    display: inline-block;
 }
 
 a {
-    margin-right: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    background: #4f46e5;
+    padding: 8px 14px;
+    border-radius: 6px;
+    margin-right: 8px;
+    transition: 0.3s ease;
+    font-size: 14px;
+}
+
+a:hover {
+    background: #3730a3;
+}
+
+/* horizontal top bar look */
+hr {
+    border: none;
+    height: 1px;
+    background: #ddd;
+    margin: 15px 0;
+}
+
+/* =========================
+   HEADINGS
+========================= */
+
+h2 {
+    color: #1f2937;
+    margin-bottom: 10px;
+}
+
+h3 {
+    margin-top: 20px;
+    color: #374151;
+}
+
+/* =========================
+   CARD STYLE (LIST ITEMS)
+========================= */
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #ffffff;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: 0.2s;
+}
+
+li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+/* links inside cards */
+li a {
+    background: none;
+    color: #111827;
+    padding: 0;
+    font-weight: 500;
+}
+
+li a:hover {
+    color: #4f46e5;
+    background: none;
+}
+
+/* =========================
+   FORMS
+========================= */
+
+form {
+    background: #ffffff;
+    padding: 20px;
+    max-width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.2s;
+    font-size: 14px;
+}
+
+input:focus, textarea:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79,70,229,0.2);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    background: #10b981;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #059669;
+}
+
+/* =========================
+   DASHBOARD STATS BOX
+========================= */
+
+p {
+    background: #ffffff;
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+    body {
+        margin: 10px;
+    }
+
+    a {
+        display: inline-block;
+        margin-bottom: 8px;
+    }
+
+    form {
+        width: 100%;
+    }
 }
