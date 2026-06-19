@@ -2,17 +2,17 @@
 <html>
 <head>
     <title>MediTrack</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-    <a href="/">Dashboard</a> |
-    <a href="/equipment">Equipment</a> |
+    <a href="/">Dashboard</a>
+    <a href="/equipment">Equipment</a>
     <a href="/add-equipment">Add Equipment</a>
 
     <hr>
 
-    {% block content %}
-    {% endblock %}
+    {% block content %}{% endblock %}
 
 </body>
 </html>

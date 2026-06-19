@@ -8,16 +8,16 @@
 
 <h3>Status Summary</h3>
 <ul>
-{% for s in status_data %}
-    <li>{{ s.status }} - {{ s.count }}</li>
-{% endfor %}
+    {% for s in status_data %}
+        <li>{{ s.status }} - {{ s.count }}</li>
+    {% endfor %}
 </ul>
 
 <h3>Overdue Maintenance</h3>
 <ul>
-{% for o in overdue %}
-    <li>{{ o.equipment_name }} - {{ o.next_due_date }}</li>
-{% endfor %}
+    {% for o in overdue %}
+        <li>{{ o.equipment_name }} - {{ o.next_due_date }}</li>
+    {% endfor %}
 </ul>
 
 {% endblock %}

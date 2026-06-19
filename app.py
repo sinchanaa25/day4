@@ -3,12 +3,11 @@ from flask_mysqldb import MySQL
 import os
 from dotenv import load_dotenv
 
-# ---------------- ENV LOAD ----------------
 load_dotenv()
 
 app = Flask(__name__)
 
-# ---------------- MYSQL CONFIG ----------------
+# MYSQL CONFIG
 app.config['MYSQL_HOST'] = os.getenv("MYSQL_HOST")
 app.config['MYSQL_USER'] = os.getenv("MYSQL_USER")
 app.config['MYSQL_PASSWORD'] = os.getenv("MYSQL_PASSWORD")
@@ -17,9 +16,7 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 mysql = MySQL(app)
 
-# =====================================================
-# 📌 AUTO DATABASE SETUP
-# =====================================================
+# INIT DB
 def init_db():
     cur = mysql.connection.cursor()
 
@@ -53,17 +50,15 @@ def init_db():
 with app.app_context():
     init_db()
 
-# =====================================================
-# 📌 DASHBOARD
-# =====================================================
+# DASHBOARD
 @app.route("/")
 def dashboard():
     cur = mysql.connection.cursor()
 
-    cur.execute("SELECT COUNT(*) FROM equipment")
-    total = cur.fetchone()['COUNT(*)']
+    cur.execute("SELECT COUNT(*) AS total FROM equipment")
+    total = cur.fetchone()['total']
 
-    cur.execute("SELECT status, COUNT(*) as count FROM equipment GROUP BY status")
+    cur.execute("SELECT status, COUNT(*) AS count FROM equipment GROUP BY status")
     status_data = cur.fetchall()
 
     cur.execute("""
@@ -81,9 +76,7 @@ def dashboard():
                            status_data=status_data,
                            overdue=overdue)
 
-# =====================================================
-# 📌 EQUIPMENT LIST
-# =====================================================
+# EQUIPMENT LIST
 @app.route("/equipment")
 def equipment_list():
     cur = mysql.connection.cursor()
@@ -93,9 +86,7 @@ def equipment_list():
 
     return render_template("equipment_list.html", equipment=equipment)
 
-# =====================================================
-# 📌 ADD EQUIPMENT
-# =====================================================
+# ADD EQUIPMENT
 @app.route("/add-equipment", methods=["GET", "POST"])
 def add_equipment():
     if request.method == "POST":
@@ -119,9 +110,7 @@ def add_equipment():
 
     return render_template("add_equipment.html")
 
-# =====================================================
-# 📌 EQUIPMENT DETAILS
-# =====================================================
+# EQUIPMENT DETAIL
 @app.route("/equipment/<int:id>")
 def equipment_detail(id):
     cur = mysql.connection.cursor()
@@ -138,9 +127,7 @@ def equipment_detail(id):
                            equipment=equipment,
                            logs=logs)
 
-# =====================================================
-# 📌 ADD MAINTENANCE
-# =====================================================
+# ADD MAINTENANCE
 @app.route("/equipment/<int:id>/add-maintenance", methods=["GET", "POST"])
 def add_maintenance(id):
     if request.method == "POST":
@@ -167,8 +154,5 @@ def add_maintenance(id):
 
     return render_template("add_maintenance.html", id=id)
 
-# =====================================================
-# 📌 RUN APP
-# =====================================================
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(debug=True)
